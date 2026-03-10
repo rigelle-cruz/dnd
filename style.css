@@ -1,0 +1,193 @@
+/* ========================
+   General Page Styles
+   ======================== */
+body {
+  margin: 0;
+  font-family: 'Georgia', serif; 
+  background: #0f1115; 
+  color: #f2f2f2; 
+  line-height: 1.6;
+}
+
+/* ========================
+   Header Styles
+   ======================== */
+header {
+  text-align: center;
+  padding: 60px 20px 40px;
+  background: linear-gradient(180deg, #1d1f25, #0f1115);
+}
+
+.medieval-header h1 {
+  font-family: 'UnifrakturMaguntia', cursive;
+  margin: 0;
+  font-size: 4.5rem;
+  letter-spacing: 2px;
+  color: #c7a75b; /* Gold accent */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.medieval-header p {
+  margin: 10px 0 0;
+  opacity: 0.7;
+  font-size: 1.5rem;
+  font-style: italic;
+}
+
+/* ========================
+   Main Layout (The "Book" Container)
+   ======================== */
+.container {
+  display: flex;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px 60px;
+  align-items: stretch; /* Forces sidebar and viewer to be same height */
+  min-height: 80vh;
+}
+
+/* ========================
+   Sidebar (Document List)
+   ======================== */
+.library {
+  flex: 0 0 280px; 
+  background: #17191d;
+  padding: 30px;
+  border: 1px solid #2a2d36;
+  border-right: none; 
+  border-radius: 12px 0 0 12px;
+  display: flex;
+  flex-direction: column;
+}
+
+.library h2 {
+  margin: 0 0 25px 0;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: #c7a75b;
+  border-bottom: 2px solid #c7a75b;
+  padding-bottom: 10px;
+}
+
+/* Buttons for PDFs */
+#pdfButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.library button {
+  width: 100%;
+  padding: 14px 18px;
+  background: #23262d;
+  border: 1px solid #343842;
+  color: #ccc;
+  border-radius: 6px;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Georgia', serif;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.library button:hover {
+  background: #2a2d36;
+  color: #fff;
+  border-color: #c7a75b;
+  transform: translateX(5px); 
+}
+
+/* ========================
+   PDF Viewer Section
+   ======================== */
+.viewer {
+  flex: 1; 
+  display: flex;
+  flex-direction: column;
+  background: #17191d;
+  padding: 0 30px 30px 30px;
+  border: 1px solid #2a2d36;
+  border-radius: 0 12px 12px 0;
+}
+
+/* Download Button Alignment */
+.controls {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 80px; 
+}
+
+.btn {
+  background: #c7a75b;
+  color: #111;
+  padding: 10px 22px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  box-shadow: 0 4px 0 #8e7641; 
+}
+
+.btn:hover {
+  background: #e2c97d;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 #8e7641;
+}
+
+.btn:active {
+  transform: translateY(1px);
+  box-shadow: 0 2px 0 #8e7641;
+}
+
+/* The Iframe */
+iframe {
+  width: 100%;
+  flex-grow: 1; 
+  min-height: 700px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  background: #2a2d36;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+
+/* ========================
+   Footer
+   ======================== */
+footer {
+  text-align: center;
+  padding: 40px 20px;
+  opacity: 0.4;
+  font-size: 0.85rem;
+  border-top: 1px solid #2a2d36;
+  margin-top: 20px;
+}
+
+/* ========================
+   Responsive (Stacking on Mobile)
+   ======================== */
+@media (max-width: 900px) {
+  .container {
+    flex-direction: column;
+    padding: 20px;
+  }
+
+  .library {
+    border-right: 1px solid #2a2d36;
+    border-bottom: none;
+    border-radius: 12px 12px 0 0;
+    width: auto;
+    flex: none;
+  }
+
+  .viewer {
+    border-radius: 0 0 12px 12px;
+    padding: 0 20px 20px 20px;
+  }
+  
+  iframe {
+    height: 500px;
+  }
+}
