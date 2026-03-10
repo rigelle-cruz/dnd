@@ -1,86 +1,89 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Guild Library</title>
-<link rel="stylesheet" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap" rel="stylesheet">
-</head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guild Library</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap"
+      rel="stylesheet"
+    />
+  </head>
 
-<body>
+  <body>
+    <header class="medieval-header">
+      <h1>The Stable Boys</h1>
+      <p>Archives of the Realm</p>
+    </header>
 
-<header class="medieval-header">
-  <h1>The Stable Boys</h1>
-  <p>Archives of the Realm</p>
-</header>
+    <main class="container">
+      <!-- Sidebar / Document List -->
+      <aside class="library">
+        <h2>Documents</h2>
+        <!-- Container for PDF buttons (generated dynamically) -->
+        <div id="pdfButtons"></div>
+      </aside>
 
-<main class="container">
+      <!-- PDF Viewer Section -->
+      <section class="viewer">
+        <!-- Download button -->
+        <div class="controls">
+          <a id="downloadBtn" class="btn" href="docs/handbook.pdf" download>
+            ⬇ Download
+          </a>
+        </div>
 
-  <!-- Sidebar / Document List -->
-  <aside class="library">
-    <h2>Documents</h2>
-    <!-- Container for PDF buttons (generated dynamically) -->
-    <div id="pdfButtons"></div>
-  </aside>
+        <!-- PDF iframe -->
+        <iframe id="pdfFrame"></iframe>
+      </section>
+    </main>
 
-  <!-- PDF Viewer Section -->
-  <section class="viewer">
+    <footer>Tom & The Stable Boys • 2026</footer>
 
-    <!-- Download button -->
-    <div class="controls">
-      <a id="downloadBtn" class="btn" href="docs/handbook.pdf" download>
-        ⬇ Download
-      </a>
-    </div>
+    <script>
+      // ==============================
+      // 1️⃣ List of PDFs
+      // Add new PDFs here
+      // Format: { title: "Button Name", file: "docs/filename.pdf" }
+      // ==============================
+      const pdfs = [
+        {
+          title: "Player's Handbook (2024 Edition)",
+          file: 'docs/handbook-2024.pdf',
+        },
+        {
+          title: "Player's Handbook (5th Edition, 2014 Edition)",
+          file: 'docs/handbook-2014.pdf',
+        },
+        { title: 'Character Sheet', file: 'docs/character-sheet.pdf' },
 
-    <!-- PDF iframe -->
-    <iframe id="pdfFrame"></iframe>
+        // Example future PDFs:
+        // { title: "Character Sheet", file: "docs/character-sheet.pdf" },
+        // { title: "World Map", file: "docs/world-map.pdf" }
+      ];
 
-  </section>
+      // ==============================
+      // 2️⃣ Get container & viewer elements
+      // ==============================
+      const container = document.getElementById('pdfButtons');
+      const iframe = document.getElementById('pdfFrame');
+      const downloadBtn = document.getElementById('downloadBtn');
 
-</main>
-
-<footer>
- Tom & The Stable Boys • 2026
-</footer>
-
-<script>
-  // ==============================
-  // 1️⃣ List of PDFs
-  // Add new PDFs here
-  // Format: { title: "Button Name", file: "docs/filename.pdf" }
-  // ==============================
-  const pdfs = [
-    { title: "Adventurer Handbook", file: "docs/handbook.pdf" },
-
-    // Example future PDFs:
-    // { title: "Character Sheet", file: "docs/character-sheet.pdf" },
-    // { title: "World Map", file: "docs/world-map.pdf" }
-  ];
-
-  // ==============================
-  // 2️⃣ Get container & viewer elements
-  // ==============================
-  const container = document.getElementById("pdfButtons");
-  const iframe = document.getElementById("pdfFrame");
-  const downloadBtn = document.getElementById("downloadBtn");
-
-  // ==============================
-  // 3️⃣ Generate buttons dynamically
-  // ==============================
-  pdfs.forEach(pdf => {
-    const btn = document.createElement("button");  // create a new button
-    btn.textContent = pdf.title;                   // set button label
-    btn.onclick = () => {
-      // Show PDF in iframe without triggering auto-download
-      iframe.src = pdf.file;                       
-      // Update download button for selected PDF
-      downloadBtn.href = pdf.file;                 
-    };
-    container.appendChild(btn);                    // add to sidebar
-  });
-</script>
-
-</body>
+      // ==============================
+      // 3️⃣ Generate buttons dynamically
+      // ==============================
+      pdfs.forEach((pdf) => {
+        const btn = document.createElement('button'); // create a new button
+        btn.textContent = pdf.title; // set button label
+        btn.onclick = () => {
+          // Show PDF in iframe without triggering auto-download
+          iframe.src = pdf.file;
+          // Update download button for selected PDF
+          downloadBtn.href = pdf.file;
+        };
+        container.appendChild(btn); // add to sidebar
+      });
+    </script>
+  </body>
 </html>
